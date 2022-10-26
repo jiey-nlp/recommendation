@@ -28,25 +28,25 @@ Dr的公平性，以对sensitive attribute的鉴别能力来衡量，鉴别越�
 
 可以通过删除相关用户的sensitive attribute的片偏见信息来学习无偏见的用户嵌入。
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\公平性\截图\1.png" alt="1" style="zoom: 67%;" />
+![1](https://user-images.githubusercontent.com/91814991/197982720-1d9ef624-6c4e-4c5f-9b5f-ef5c69d78abb.png)
 
 将用户兴趣模型分解为两个组件，bias-aware，其主要目的是学习偏差感知的用户嵌入，以捕获敏感用户属性上的偏差信息，和一个bias-free，只将用户感兴趣的与属性无关的信息编码为无偏差的用户嵌入。
 
 将sensitive attribute的预测任务应用到bias-aware用户embedding，属性预测器预测用户的属性z
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\公平性\截图\2.png" alt="2" style="zoom: 80%;" />
+![2](https://user-images.githubusercontent.com/91814991/197982742-4eabd11b-9fc9-4f61-828d-7feb93ff6f8d.png)
 
 Wb和bb是参数，^z是预测的概率向量，这里的损失为：zij为第i类第j个用户属性的真实概率，^zij为预测的概率
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\公平性\截图\3.png" alt="3" style="zoom: 67%;" />
+![3](https://user-images.githubusercontent.com/91814991/197982776-50782147-6f1a-40f2-9c2e-c79dc47a4397.png)
 
 将对抗也应用到bias-free中，用属性判别器根据bias-free的用户嵌入预测用户属性，
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\公平性\截图\4.png" alt="4" style="zoom: 80%;" />
+![4](https://user-images.githubusercontent.com/91814991/197982798-12b3b760-2b58-4ca6-875c-805f584c3622.png)
 
 Wd和bd是参数，属性判别器的loss类似预测器
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\公平性\截图\5.png" alt="5" style="zoom:67%;" />
+![5](https://user-images.githubusercontent.com/91814991/197982808-9893fcbe-d0ec-49d3-82c0-65108891978b.png)
 
 为了避免鉴别器从bias-free用户embedding中推断用户属性，使用鉴别器负梯度来惩罚模型
 
@@ -54,7 +54,7 @@ bias-free的embedding经过鉴别器，仍然无法完全去除sensitive attribu
 
 让bias-aware的用户embedding和bias-free的用户embedding彼此正交，正则化损失如下：
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\公平性\截图\6.png" alt="6" style="zoom:60%;" />
+![6](https://user-images.githubusercontent.com/91814991/197982827-544b94dc-7a5c-4277-a20a-f77256b3b6b0.png)
 
 **u**ib是第i个用户的bias-aware embedding，**u**id是第i个用户的bias-free embedding
 
@@ -64,11 +64,11 @@ bias-free的embedding经过鉴别器，仍然无法完全去除sensitive attribu
 
 用户点击Dc的概率表示为^y=u·ec，按照前人提出的使用负抽样技术构建标记样本进行新闻推荐模型训练。即对于用户单击的每个候选新闻，选取T个用户没点击过新闻作为负样本，
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\公平性\截图\7.png" alt="7" style="zoom: 67%;" />
+![7](https://user-images.githubusercontent.com/91814991/197982839-a5c02aaf-b708-448e-bffa-805ad52e9f59.png)
 
 ^yi是第i个被点击的候选新闻，^yi,j是该候选新闻相关联的第j个负面新闻的点击分数，Nc是用于训练的点击候选新闻数量
 
 推荐模型最终损失函数是新闻推荐，属性预测，正交正则化和对抗损失函数的加权求和，λ是控制相应损失的系数。
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\公平性\截图\8.png" alt="8" style="zoom:67%;" />
+![8](https://user-images.githubusercontent.com/91814991/197982853-0cbe7650-2c5f-41c8-a475-75b65563b170.png)
 
