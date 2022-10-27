@@ -24,7 +24,7 @@
 
 认为该解释从用户角度去看不一定是很有质量的解释，假设存在用户相关解释属性的一个集合CEX，用C(u):(P~u，L~up)，一个实例解释属性，将附加一个近期的以往交互到该推荐物品的路径中，一个理想的解释θ，最大化目标函数的期望：
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\可解释性\Post Processing Recommender Systems with Knowledge Graphs for Recency, Popularity, and Diversity of Explanations\截图\1.png" alt="1" style="zoom: 67%;" />
+![1](https://user-images.githubusercontent.com/91814991/198167859-159022a5-effc-41b7-af64-095e16469067.png)
 
 CRU根据推荐效用进行优化，并对推荐的产品（以及可解释的路径）进行重新排序，两者结合，推荐程序和解释质量属性的权重相等，以使解释属性最大化，同时考虑推荐效用。
 
@@ -64,7 +64,7 @@ CRU根据推荐效用进行优化，并对推荐的产品（以及可解释的�
 
 给定一个交互（pi，ti）∈Tu，该交互的LIR计算为：
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\可解释性\Post Processing Recommender Systems with Knowledge Graphs for Recency, Popularity, and Diversity of Explanations\截图\2.png" alt="2" style="zoom: 50%;" />
+![2](https://user-images.githubusercontent.com/91814991/198167874-5651d4f3-f837-4d4d-b017-88745fa1b570.png)
 
 βLIR∈[0,1]，随着交互时间衰减，LIR(p1,t1)=t1，每个用户的LIR在[0,1]范围，靠近0意味着交互连接时间距离很远，否则为1
 
@@ -76,7 +76,7 @@ CRU根据推荐效用进行优化，并对推荐的产品（以及可解释的�
 
 给定类型λ的实体列表，根据受欢迎程度，Sλ=[(ei,vi)]，ei∈Eλ是类型λ下的一个实体，vi是一个共享实体所涉及的关系数量（度），衰减应用于Sλ，得到类型λ下的一个实体的SEP：
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\可解释性\Post Processing Recommender Systems with Knowledge Graphs for Recency, Popularity, and Diversity of Explanations\截图\3.png" alt="3" style="zoom: 80%;" />
+![3](https://user-images.githubusercontent.com/91814991/198167882-ea4c4900-22a8-40cd-a1c1-03ddfa945d4c.png)
 
 βSEP和流行度相关的衰减，SEP(e1,v1)=v1，SEP值同样属于[0,1]，约低的流行度就趋向0，反之趋向1
 
@@ -92,7 +92,7 @@ CRU根据推荐效用进行优化，并对推荐的产品（以及可解释的�
 
 用户u的ETD计算：在选中的解释关系中在推荐列表大小k和可能的解释类型的总数，两者最小值，作为唯一类型的数量
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\可解释性\Post Processing Recommender Systems with Knowledge Graphs for Recency, Popularity, and Diversity of Explanations\截图\4.png" alt="4" style="zoom:67%;" />
+![4](https://user-images.githubusercontent.com/91814991/198167892-95f2b509-b09b-4f7e-8c0e-bd354a8fb2d9.png)
 
 #### EXPLANATION PROPERTY OPTIMIZATION
 
@@ -110,7 +110,7 @@ CRU根据推荐效用进行优化，并对推荐的产品（以及可解释的�
 
 根据解释属性去对每个推荐产品的解释路径重新排序，但是不包括最初的推荐产品。
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\可解释性\Post Processing Recommender Systems with Knowledge Graphs for Recency, Popularity, and Diversity of Explanations\截图\5.png" alt="5" style="zoom: 67%;" />
+![5](https://user-images.githubusercontent.com/91814991/198167908-eb89e394-f51f-4ad0-88bc-14f30f90bf6d.png)
 
 ##### Weighted Optimization
 
@@ -120,7 +120,7 @@ CRU根据推荐效用进行优化，并对推荐的产品（以及可解释的�
 
 权重α分配给目标属性量化，目标属性产品对用户的相关性有多么的重要，计算了所有的加权得分，取最高得分的产品，将该产品添加到第i位置上推荐给u的产品，重复至位置k。集合P~u里，i位置的优化：
 
-<img src="C:\Users\wangkui\Desktop\推荐系统\可解释性\Post Processing Recommender Systems with Knowledge Graphs for Recency, Popularity, and Diversity of Explanations\截图\6.png" alt="6" style="zoom:80%;" />
+![6](https://user-images.githubusercontent.com/91814991/198167923-20e3b22e-34b9-4010-af78-027e3fe17839.png)
 
 位置0为空集，α∈[0,1]是表示相关性和目标属性之间的权衡参数。当α=0，则直接输出原始模型输出，不考虑目标属性。当α=1，抛弃推荐模型的输出，将目标属性最大化。
 
