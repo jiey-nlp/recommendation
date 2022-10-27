@@ -3,3 +3,5 @@ FairRec: Fairness-aware News Recommendation with Decomposed Adversarial Learning
 
 可解释性
 Post Processing Recommender Systems with Knowledge Graphs for Recency, Popularity, and Diversity of Explanations [[PDF](https://dl.acm.org/doi/10.1145/3477495.3532041)][[笔记](https://github.com/KKu1/recommendation/blob/main/paper/Explanation/POSTPR~1.MD)]
+迁移学习
+RecGURUAdversarial Learning of Generalized User Representations for Cross-Domain Recommendation[[PDF](https://dl.acm.org/doi/10.1145/3477495.3532041)][[笔记](https://github.com/KKu1/recommendation/blob/main/paper/Explanation/POSTPR~1.MD)]
